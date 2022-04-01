@@ -20,6 +20,12 @@ header {
     color: #4c79d3;
 }
 
+.icon-detail {
+    font-size: 50px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
 .text-login {
     color: #ffffff;
     font-size: 18px;
@@ -39,7 +45,13 @@ header {
     margin: 0 25%;
 }
 
-.button-login:hover {
+.button-default {
+    border-radius: 10px;
+    background-color: #4e0070;
+    color: #fff;
+}
+
+.button-login:hover, .button-default:hover {
     background: #4c79d3;
     color: #ffffff;
 }
@@ -51,4 +63,10 @@ header {
 
 .link-default:hover {
     color: #4c79d3;
+}
+
+.info {
+    background-color: #fff;
+    border-radius: 20px 20px 0px 0px;
+    padding: 20px 0px 0px 0px;
 }
