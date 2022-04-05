@@ -51,6 +51,10 @@ header {
     color: #fff;
 }
 
+.button-cancel {
+    border-radius: 10px;
+}
+
 .button-login:hover, .button-default:hover {
     background: #4c79d3;
     color: #ffffff;
