@@ -1,84 +1,35 @@
-const nome = "Marcelo Eltz";
-let nome2 = "";
-let pessoaDefault = {
-    nome: "Marcelo Eltz",
-    idade: "33",
-    trabalho: "Programador"
-}
+const myModal = new bootstrap.Modal("#register-modal");
 
-let nomes = ["Marcelo Eltz", "Maria Silva", "Pedro Silva"];
-let pessoas = [{
-    nome: "Marcelo Eltz",
-    idade: "33",
-    trabalho: "Programador"
-},
-{
-    nome: "Maria Silva",
-    idade: "25",
-    trabalho: "UX/UI Designerd"
-}];
+// CRIAR CONTA 
 
-function alterarNome () {
-    nome2 = "Maria Silva";
-    console.log("Valor alterado:");
-    console.log(nome2);
-}
-
-function recebeEalteraNome (novoNome) {
-    nome2 = novoNome;
-    console.log("Valor alterado recebendo um nome:");
-    console.log(nome2);
-}
-
-function imprimirPessoa (pessoa) {
-    console.log(pessoa);
+document.getElementById("create-form").addEventListener("submit", function (e) {
+    e.preventDefault();
     
-    console.log("Nome:");
-    console.log(pessoa.nome);
-    
-    console.log("Idade:");
-    console.log(pessoa.idade);
-    
-    console.log("Trabalho:");
-    console.log(pessoa.trabalho);
-}
+    const email = document.getElementById("email-create-input").value;
+    const password = document.getElementById("password-create-input").value;
 
-function adicionarPessoa(pessoa) {
-    pessoas.push(pessoa);
-}
+    if(email.length < 5) {
+        alert("Preencha o campo com um e-mail válido.");
+        return;
+    }
 
-function imprimirPessoas () {
-    console.log("--------IMPRIMIR PESSOAS--------")
-    pessoas.forEach((item) => {
-        console.log("Nome:");
-        console.log(item.nome);
+    if(password.length < 4) {
+        alert("Preencha a senha com no mínimo 4 digitos.");
+        return;
+    }
 
-        console.log("Idade:");
-        console.log(item.idade);
-    
-        console.log("Trabalho:");
-        console.log(item.trabalho);
-    })
-}
+    saveAccount({
+        login: email,
+        password: password,
+        transactions: []
+    });
 
-console.log(pessoas)
+    myModal.hide();
 
-imprimirPessoas()
+    alert("Conta criada com sucesso!");
 
-adicionarPessoa({
-    nome: "Pedro Silva",
-    idade: "28",
-    trabalho: "Porteiro"
-})
-
-imprimirPessoas()
-
-console.log(pessoas)
-
-/* imprimirPessoa (pessoaDefault);
-imprimirPessoa ({
-    nome: "Maria Silva",
-    idade: "25",
-    trabalho: "UX/UI Designer"
 });
-*/
+
+function saveAccount(data) {
+    localStorage.setItem(data.login, JSON.stringify(data));
+}
